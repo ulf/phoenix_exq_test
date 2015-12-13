@@ -19,6 +19,18 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+config :exq,
+  host: "127.0.0.1",
+  port: 6379,
+  namespace: "exq",
+  concurrency: 5,
+  queues: ["default"],
+  poll_timeout: 50,
+  scheduler_poll_timeout: 200,
+  scheduler_enable: true,
+  max_retries: 25
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
+
